@@ -10,7 +10,7 @@ REGISTRY_EMAIL
 
 # serverpod
 docker compose up -d
-serverpod create-migration --experimental-features=all
+serverpod create-migration --experimental-features=all --force
 serverpod generate --experimental-features=all
 dart bin/main.dart --apply-migrations
 

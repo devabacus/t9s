@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:t9s_client/t9s_client.dart';
 
-// var client = Client('https://api5.my-points.ru/')
-var client = Client('http://localhost:8080/')
+var client = Client('https://api.my-points.ru/')
+// var client = Client('http://localhost:8080/')
   ..connectivityMonitor = FlutterConnectivityMonitor();
 
 class ServerCheckUi extends StatefulWidget {
@@ -56,7 +56,7 @@ class _ServerCheckUiState extends State<ServerCheckUi> {
       // Создаем объект TestData
       final newItem = TestData(
         id: newUuid, 
-        title: _titleController.text
+        title1: _titleController.text
       );
       
       // Вызываем client.testData.createTestData()
@@ -74,7 +74,7 @@ class _ServerCheckUiState extends State<ServerCheckUi> {
   Future<void> _updateItem(TestData item, String newTitle) async {
     setState(() => _isLoading = true);
     try {
-      final updatedItem = TestData(id: item.id, title: newTitle);
+      final updatedItem = TestData(id: item.id, title1: newTitle);
       // Вызываем client.testData.updateTestData()
       await client.testData.updateTestData(updatedItem);
       await _fetchItems();
@@ -100,7 +100,7 @@ class _ServerCheckUiState extends State<ServerCheckUi> {
   }
 
   void _showEditDialog(TestData item) {
-    final editController = TextEditingController(text: item.title);
+    final editController = TextEditingController(text: item.title1);
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -182,7 +182,7 @@ class _ServerCheckUiState extends State<ServerCheckUi> {
               itemBuilder: (context, index) {
                 final item = _items[index];
                 return ListTile(
-                  title: Text(item.title),
+                  title: Text(item.title1),
                   subtitle: Text('ID: ${item.id?.uuid ?? "N/A"}', style: const TextStyle(color: Colors.grey, fontSize: 12)),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,

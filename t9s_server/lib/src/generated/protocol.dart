@@ -39,7 +39,7 @@ class Protocol extends _i1.SerializationManagerServer {
           columnDefault: 'gen_random_uuid_v7()',
         ),
         _i2.ColumnDefinition(
-          name: 'title',
+          name: 'title1',
           columnType: _i2.ColumnType.text,
           isNullable: false,
           dartType: 'String',

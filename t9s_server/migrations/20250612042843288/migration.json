@@ -1,0 +1,69 @@
+{
+  "actions": [
+    {
+      "type": "deleteTable",
+      "deleteTable": "test_data"
+    },
+    {
+      "type": "createTable",
+      "createTable": {
+        "name": "test_data",
+        "dartName": "TestData",
+        "module": "t9s",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 7,
+            "isNullable": false,
+            "columnDefault": "gen_random_uuid_v7()",
+            "dartType": "UuidValue?"
+          },
+          {
+            "name": "title1",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "indexName": "test_data_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          }
+        ],
+        "managed": true
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "columnDropped",
+      "message": "Column \"title\" of table \"test_data\" will be dropped.",
+      "table": "test_data",
+      "columns": [
+        "title"
+      ],
+      "destrucive": true
+    },
+    {
+      "type": "tableDropped",
+      "message": "One or more columns are added to table \"test_data\" which cannot be added in a table migration. The complete table will be deleted and recreated.",
+      "table": "test_data",
+      "columns": [
+        "title1"
+      ],
+      "destrucive": true
+    }
+  ],
+  "migrationApiVersion": 1
+}
