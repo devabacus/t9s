@@ -61,7 +61,7 @@ jobs:
 
       - name: Create or Update Image Pull Secret
         run: |
-          kubectl create secret docker-registry timeweb-registry-secret             --docker-server=dbe81550-wise-chickadee.registry.twcstorage.ru             --docker-username=${{ secrets.REGISTRY_USER }}             --docker-password=${{ secrets.REGISTRY_PASSWORD }}             --docker-email=${{ secrets.REGISTRY_EMAIL }}             --dry-run=client -o yaml | kubectl apply -f -
+          kubectl create secret docker-registry timeweb-registry-secret             --docker-server=4dc3df58-daring-grosbeak.registry.twcstorage.ru             --docker-username=${{ secrets.REGISTRY_USER }}             --docker-password=${{ secrets.REGISTRY_PASSWORD }}             --docker-email=${{ secrets.REGISTRY_EMAIL }}             --dry-run=client -o yaml | kubectl apply -f -
 
       - name: Create or Update Kubernetes Secret for Serverpod
         run: |
@@ -72,14 +72,14 @@ jobs:
           echo "Updating manifests with image tag: ${{ needs.build-and-push-image.outputs.tag }}"
           
           # Более универсальная замена - заменяет любой тег после t9s-server:
-          sed -i 's|dbe81550-wise-chickadee.registry.twcstorage.ru/t9s-server:.*|dbe81550-wise-chickadee.registry.twcstorage.ru/t9s-server:${{ needs.build-and-push-image.outputs.tag }}|g' t9s_server/k8s/deployment.yaml
-          sed -i 's|dbe81550-wise-chickadee.registry.twcstorage.ru/t9s-server:.*|dbe81550-wise-chickadee.registry.twcstorage.ru/t9s-server:${{ needs.build-and-push-image.outputs.tag }}|g' t9s_server/k8s/job.yaml
+          sed -i 's|4dc3df58-daring-grosbeak.registry.twcstorage.ru/t9s-server:.*|4dc3df58-daring-grosbeak.registry.twcstorage.ru/t9s-server:${{ needs.build-and-push-image.outputs.tag }}|g' t9s_server/k8s/deployment.yaml
+          sed -i 's|4dc3df58-daring-grosbeak.registry.twcstorage.ru/t9s-server:.*|4dc3df58-daring-grosbeak.registry.twcstorage.ru/t9s-server:${{ needs.build-and-push-image.outputs.tag }}|g' t9s_server/k8s/job.yaml
           
           # Проверяем только строку с образом
           echo "Updated deployment image:"
-          grep "dbe81550-wise-chickadee.registry.twcstorage.ru/t9s-server:" t9s_server/k8s/deployment.yaml
+          grep "4dc3df58-daring-grosbeak.registry.twcstorage.ru/t9s-server:" t9s_server/k8s/deployment.yaml
           echo "Updated job image:"
-          grep "dbe81550-wise-chickadee.registry.twcstorage.ru/t9s-server:" t9s_server/k8s/job.yaml
+          grep "4dc3df58-daring-grosbeak.registry.twcstorage.ru/t9s-server:" t9s_server/k8s/job.yaml
 
       - name: Apply infrastructure manifests
         run: |
