@@ -3,7 +3,7 @@ project:
   name: "t9s"
   
 server:
-  ip: "5.129.200.195"
+  ip: ""
   http_port: "80:80"
   https_port: "443:443"
   domain: "my-points.ru"
@@ -14,13 +14,13 @@ server:
   email: "frolprank@gmail.com"
   
 database:
-  host: "192.168.0.6"
+  host: "192.168.0.4"
   port: "5432"
   name: "t9s_db"
   user: "t9s_user"  
 
 reddis:
-  host: "192.168.0.7"
+  host: "192.168.0.5"
   port: "6379"
   user: "default"
   
