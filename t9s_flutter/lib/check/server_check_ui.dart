@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:t9s_client/t9s_client.dart';
 
-var client = Client('https://api.my-points.ru/')
+var client = Client('https://api2.my-points.ru/')
 // var client = Client('http://localhost:8080/')
   ..connectivityMonitor = FlutterConnectivityMonitor();
 
